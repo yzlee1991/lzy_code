@@ -1,10 +1,6 @@
 package com.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.lzy.H;
 
-@RequestMapping("/c")
+@RequestMapping("/index")
 @Controller
 public class C {
 	
@@ -21,11 +17,8 @@ public class C {
 	H h;
 	
 	@RequestMapping()
-	public void t(HttpServletResponse response) throws IOException{
-		System.out.println("------------------>>>accpet");
-		PrintWriter pw=response.getWriter();
-		pw.write("success change !!!!!!!!!!!!!!");
-		pw.close();
+	public ModelAndView index() throws IOException{
+		return new ModelAndView("/index");
 	}
 	
 	@RequestMapping(params="method=t1")
