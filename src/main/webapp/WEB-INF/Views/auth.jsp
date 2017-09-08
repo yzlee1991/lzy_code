@@ -14,6 +14,6 @@
   <body>
     This is auth page <br>
     
-    <a href="https://api.weibo.com/oauth2/authorize?client_id=2043795053&response_type=code&redirect_uri=http://crazydota.51vip.biz"><img src="img/48.png"></img></a>
+    <a href="https://api.weibo.com/oauth2/authorize?client_id=2043795053&response_type=code&redirect_uri=http://crazydota.51vip.biz/auth?callback"><img src="img/48.png"></img></a>
   </body>
 </html>
