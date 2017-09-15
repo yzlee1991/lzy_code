@@ -13,6 +13,7 @@
  	
 	<!-- 使srping-mvc能过滤掉静态资源使其能直接访问 -->
 	<mvc:resources mapping="/img/**" location="/img/" />
+	<mvc:resources mapping="/js/**" location="/js/" />
 
 
  
