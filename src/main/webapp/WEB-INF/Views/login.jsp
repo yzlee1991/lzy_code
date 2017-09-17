@@ -5,16 +5,65 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="http://127.0.0.1:8080/lzy/js/jquery-1.10.2.min.js" />
+<script type="text/javascript" src="http://127.0.0.1:8080/lzy/js/jquery-1.10.2.min.js"></script>
+
+<script type="text/javascript" src="http://127.0.0.1:8080/lzy/js/BigInt.js"></script>
+<script type="text/javascript" src="http://127.0.0.1:8080/lzy/js/Barrett.js"></script>
+<script type="text/javascript" src="http://127.0.0.1:8080/lzy/js/RSA.js"></script>
+
+<script type="text/javascript" src="js/jsencrypt.min.js"></script>
+
 <script type="text/javascript">
 	$(function(){
-	alert(1);
+		$('#login_btn').click(function(){
+			var userName=$('#username').val();
+			var passWord=$('#password').val();
+			setMaxDigits(131);
+			$.ajax({
+				async:false,
+				url:'/lzy/login/passkey',
+				dataType:'json',
+				success:function(data){
+					console.log(data);
+					var key = new RSAKeyPair(data.public_exponent, "", data.modulus);
+					var passcode = encryptedString(key, passWord); 
+					console.log(passcode);
+					
+					
+					var encrypt = new JSEncrypt();
+					encrypt.setPublicKey(data.modulus);  
+					var encryptData = encrypt.encrypt(passWord);//加密后的字符串  
+					console.log(encryptData) 
+					encryptData = encrypt.encrypt(passWord);//加密后的字符串  
+					console.log(encryptData)  
+					
+					
+					$.ajax({
+						async:false,
+						type:'post',
+						url:'/lzy/login/auth',
+						dataType:'json',
+						data:{userName:userName,passWord:passcode},
+						success:function(data){
+							console.log('yes');
+						},
+						error:function(data){
+							console.log(passcode);
+						},
+					});
+				},				
+			});
+		
+		});
 	});
+	
+	
+	
 </script>
 </head>
 <body>
-	用户名：<input type="text"/><br/>
-	密     码：<input type="password"/><br/>
+	用户名：<input id='username' type="text"/><br/>
+	密     码：<input id='password' type="password"/><br/>
 	<button id='login_btn'>登陆</button>
 </body>
 </html>
