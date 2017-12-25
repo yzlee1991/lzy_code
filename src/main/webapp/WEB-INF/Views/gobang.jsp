@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>五子棋</title>
+    <title>随棋手AI_V1.0</title>
     <style type="text/css">
         canvas{
         display: block;
@@ -15,7 +15,7 @@
 </head>
 <body>
     <canvas id="mycanvas" width="450px" height="450px"></canvas>
-    <script type="text/javascript" src="http://127.0.0.1:8080/lzy/js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="crazydota.51vip.biz/js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript">
         var chess = document.getElementById("mycanvas");
         var context = chess.getContext('2d');
@@ -276,7 +276,7 @@
         		serverData.data=JSON.stringify(chessDataList);
         		saveData(serverData);
         		//刷新页面
-        		//location.reload();
+        		location.reload();
         	}
         }
 
@@ -595,16 +595,16 @@
 		function saveData(data){
 		console.log(data);
 			$.ajax({
-				async:false,
+				async:true,
 				url: "/lzy/games?gobangdata",
 				data:{data:data.data,winner:data.winner,},
 				dataType:'text',
-				success:function(msg){
+				/* success:function(msg){
 					alert(msg);
 				},
 				error:function(msg){
 					alert("后台错误："+msg);
-				}
+				} */
 			});
 		}
 		

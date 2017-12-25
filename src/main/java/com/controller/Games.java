@@ -1,5 +1,6 @@
 package com.controller;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -13,6 +14,8 @@ import com.utils.Mysql;
 @RequestMapping("/games")
 @Controller
 public class Games {
+	
+	Logger log=Logger.getLogger(Games.class);
 
 	@RequestMapping(params="gobang")
 	public String gobang(){
