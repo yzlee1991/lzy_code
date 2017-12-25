@@ -276,6 +276,7 @@
         		serverData.data=JSON.stringify(chessDataList);
         		saveData(serverData);
         		//刷新页面
+        		//location.reload();
         	}
         }
 
@@ -347,28 +348,32 @@
 			tempJ=j;
 			stepWeight=1;
 			step=1;
-			while(--tempI>=0&&chessBox[tempI][j]==k){//左
+			while(tempI-1>=0&&chessBox[tempI-1][j]==k){//左
 				stepWeight++;
 				step++;
+				tempI--;
 			}
 			if(tempI-1>=0&&chessBox[tempI-1][j]==me.Blank){
 				chess.henBlankWeight++;
 			}
-			while(--tempI>=0&&chessBox[tempI][j]==me.Blank){
+			while(tempI-1>=0&&chessBox[tempI-1][j]==me.Blank){
 				step++;
+				tempI--;
 			}
 
 			tempI=i;
 			tempJ=j;
-			while(++tempI<15&&chessBox[tempI][j]==k){//右
+			while(tempI+1<15&&chessBox[tempI+1][j]==k){//右
 				stepWeight++;
 				step++;
+				tempI++;
 			}
 			if(tempI+1<15&&chessBox[tempI+1][j]==me.Blank){
 				chess.henBlankWeight++;
 			}
-			while(++tempI<15&&chessBox[tempI][j]==me.Blank){
+			while(tempI+1<15&&chessBox[tempI+1][j]==me.Blank){
 				step++;
+				tempI++;
 			}
 
 			chess.henStepWeight=stepWeight;
@@ -379,28 +384,32 @@
 			tempJ=j;
 			stepWeight=1;
 			step=1;
-			while(--tempJ>=0&&chessBox[i][tempJ]==k){//上
+			while(tempJ-1>=0&&chessBox[i][tempJ-1]==k){//上
 				stepWeight++;
 				step++;
+				tempJ--;
 			}
 			if(tempJ-1>=0&&chessBox[i][tempJ-1]==me.Blank){
 				chess.shuBlankWeight++;
 			}
-			while(--tempJ>=0&&chessBox[i][tempJ]==me.Blank){
+			while(tempJ-1>=0&&chessBox[i][tempJ-1]==me.Blank){
 				step++;
+				tempJ--;
 			}
 
 			tempI=i;
 			tempJ=j;
-			while(++tempJ<15&&chessBox[i][tempJ]==k){//下
+			while(tempJ+1<15&&chessBox[i][tempJ+1]==k){//下
 				stepWeight++;
 				step++;
+				tempJ++;
 			}
 			if(tempJ+1<15&&chessBox[i][tempJ+1]==me.Blank){
 				chess.shuBlankWeight++;
 			}
-			while(++tempJ<15&&chessBox[i][tempJ]==me.Blank){
+			while(tempJ+1<15&&chessBox[i][tempJ+1]==me.Blank){
 				step++;
+				tempJ++;
 			}
 
 			chess.shuStepWeight=stepWeight;
@@ -411,28 +420,36 @@
 			tempJ=j;
 			stepWeight=1;
 			step=1;
-			while(--tempI>=0&&++tempJ<15&&chessBox[tempI][tempJ]==k){//左低
+			while(tempI-1>=0&&tempJ+1<15&&chessBox[tempI-1][tempJ+1]==k){//左低
 				stepWeight++;
 				step++;
+				tempI--;
+				tempJ++;
 			}
 			if(tempI-1>=0&&tempJ+1<15&&chessBox[tempI-1][tempJ+1]==me.Blank){
 				chess.zxBlankWeight++;
 			}
-			while(--tempI>=0&&++tempJ<15&&chessBox[tempI][tempJ]==me.Blank){
+			while(tempI-1>=0&&tempJ+1<15&&chessBox[tempI-1][tempJ+1]==me.Blank){
 				step++;
+				tempI--;
+				tempJ++;
 			}
 
 			tempI=i;
 			tempJ=j;
-			while(++tempI<15&&--tempJ>=0&&chessBox[tempI][tempJ]==k){//右高
+			while(tempI+1<15&&tempJ-1>=0&&chessBox[tempI+1][tempJ-1]==k){//右高
 				stepWeight++;
 				step++;
+				tempI++;
+				tempJ--;
 			}
 			if(tempI+1<15&&tempJ-1>=0&&chessBox[tempI+1][tempJ-1]==me.Blank){//右高
 				chess.zxBlankWeight++;
 			}
-			while(++tempI<15&&--tempJ>=0&&chessBox[tempI][tempJ]==me.Blank){//右高
+			while(tempI+1<15&&tempJ-1>=0&&chessBox[tempI+1][tempJ-1]==me.Blank){//右高
 				step++;
+				tempI++;
+				tempJ--;
 			}
 
 			chess.zxStepWeight=stepWeight;
@@ -443,28 +460,36 @@
 			tempJ=j;
 			stepWeight=1;
 			step=1;
-			while(++tempI<15&&++tempJ<15&&chessBox[tempI][tempJ]==k){//右低
+			while(tempI+1<15&&tempJ+1<15&&chessBox[tempI+1][tempJ+1]==k){//右低
 				stepWeight++;
 				step++;
+				tempI++;
+				tempJ++;
 			}
 			if(tempI+1<15&&tempJ+1<15&&chessBox[tempI+1][tempJ+1]==me.Blank){
 				chess.yxBlankWeight++;
 			}
-			while(++tempI<15&&++tempJ<15&&chessBox[tempI][tempJ]==me.Blank){
+			while(tempI+1<15&&tempJ+1<15&&chessBox[tempI+1][tempJ+1]==me.Blank){
 				step++;
+				tempI++;
+				tempJ++;
 			}
 
 			tempI=i;
 			tempJ=j;
-			while(--tempI>=0&&--tempJ>=0&&chessBox[tempI][tempJ]==k){//左高
+			while(tempI-1>=0&&tempJ-1>=0&&chessBox[tempI-1][tempJ-1]==k){//左高
 				stepWeight++;
 				step++;
+				tempI--;
+				tempJ--;
 			}
 			if(tempI-1>=0&&tempJ-1>=0&&chessBox[tempI-1][tempJ-1]==me.Blank){
 				chess.yxBlankWeight++;
 			}
-			while(--tempI>=0&&--tempJ>=0&&chessBox[tempI][tempJ]==me.Blank){
+			while(tempI-1>=0&&tempJ-1>=0&&chessBox[tempI-1][tempJ-1]==me.Blank){
 				step++;
+				tempI--;
+				tempJ--;
 			}
 
 			chess.yxStepWeight=stepWeight;
@@ -488,17 +513,17 @@
 				chess.zxStepWeight=0;
 			}
 			if(chess.yxDirctionWeight==0){
-				chess.yxDirctionWeight=0;
+				chess.yxStepWeight=0;
 			}
-			var finalWeight=chess.henStepWeight;
-			if(finalWeight<chess.shuStepWeight){
-				finalWeight=chess.shuStepWeight;
+			var finalWeight=chess.henStepWeight+0.5*chess.henBlankWeight;
+			if(finalWeight<chess.shuStepWeight+0.5*chess.shuBlankWeight){
+				finalWeight=chess.shuStepWeight+0.5*chess.shuBlankWeight;
 			}
-			if(finalWeight<chess.zxStepWeight){
-				finalWeight=chess.zxStepWeight;
+			if(finalWeight<chess.zxStepWeight+0.5*chess.zxBlankWeight){
+				finalWeight=chess.zxStepWeight+0.5*chess.zxBlankWeight;
 			}
-			if(finalWeight<chess.yxStepWeight){
-				finalWeight=chess.yxStepWeight;
+			if(finalWeight<chess.yxStepWeight+0.5*chess.yxBlankWeight){
+				finalWeight=chess.yxStepWeight+0.5*chess.yxBlankWeight;
 			}
 			return finalWeight;
 
@@ -570,12 +595,16 @@
 		function saveData(data){
 		console.log(data);
 			$.ajax({
+				async:false,
 				url: "/lzy/games?gobangdata",
 				data:{data:data.data,winner:data.winner,},
-				dataType:'json',
+				dataType:'text',
 				success:function(msg){
 					alert(msg);
 				},
+				error:function(msg){
+					alert("后台错误："+msg);
+				}
 			});
 		}
 		

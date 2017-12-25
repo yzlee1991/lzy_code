@@ -1,5 +1,5 @@
 #MyEclipse Hibernate Properties
-#Fri Dec 22 15:15:38 CST 2017
+#Mon Dec 25 09:49:24 CST 2017
 genBasicCompId=true
 sessionFactoryName=
 profile=
@@ -10,11 +10,11 @@ reStrategyClass=
 detectO2O=false
 springDaoFile=
 useJavaTypes=true
-keyGenerator=native
+keyGenerator=increment
 genVersionTag=false
 sessionFactoryId=
 basePersistenceClass=
-genAnnotations=false
+genAnnotations=true
 reSettingsFile=/lzy/hibernate.reveng.xml
-configFile=/ssh/src/main/resources/hibernate.cfg.xml
+configFile=/lzy/src/main/resources/hibernate.cfg.xml
 createConfigFile=true
