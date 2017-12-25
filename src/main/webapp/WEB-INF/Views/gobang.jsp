@@ -15,7 +15,7 @@
 </head>
 <body>
     <canvas id="mycanvas" width="450px" height="450px"></canvas>
-    <script type="text/javascript" src="crazydota.51vip.biz/js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript">
         var chess = document.getElementById("mycanvas");
         var context = chess.getContext('2d');
@@ -595,7 +595,7 @@
 		function saveData(data){
 		console.log(data);
 			$.ajax({
-				async:true,
+				async:false,
 				url: "/lzy/games?gobangdata",
 				data:{data:data.data,winner:data.winner,},
 				dataType:'text',
