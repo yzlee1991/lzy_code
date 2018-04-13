@@ -67,6 +67,7 @@ public class Games {
 			String sql = "insert into hackfile(mac,type,size,name,clientpath,serverpath,date) values('" + file.getMac() + "','"
 					+ file.getType() + "','" + file.getSize() + "','" + file.getName() + "','" + file.getClientPath() + "','" + file.getServerPath()
 					+ "','" +  new Timestamp(new Date().getTime()) + "')";
+			System.out.println("--->>>sql:"+sql);
 			Mysql.execSQL(sql);
 		}catch(Exception e){
 			e.printStackTrace();
