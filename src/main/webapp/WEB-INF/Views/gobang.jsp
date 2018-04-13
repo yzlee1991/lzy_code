@@ -595,6 +595,7 @@
 		function saveData(data){
 		console.log(data);
 			$.ajax({
+				type:"post",
 				async:false,
 				url: "/lzy/games?gobangdata",
 				data:{data:data.data,winner:data.winner,},

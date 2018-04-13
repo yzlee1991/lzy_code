@@ -18,7 +18,7 @@ public class Mysql {
 	public static boolean execSQL(String sql){
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://192.168.92.59:3306/lzy?useSSL=false","root","123456");
+			conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lzy?useSSL=false&characterEncoding=utf8","root","123456");
 			st=conn.createStatement();
 			return st.execute(sql);
 		} catch (Exception e) {
